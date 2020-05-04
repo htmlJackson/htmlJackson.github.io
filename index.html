@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>actiTIME features</title>
+  <meta name="description" content="A page's description, actiTIME features here."/>
+  <meta name="keywords" content="features, advantages, actiTime, Data Warehouse" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container header__container">
+      <img src="img/logo.svg" width="49" height="35" alt="actiTIME logo" class="logo header__logo">
+      <nav class="nav">
+        <ul class="nav__list">
+          <li>
+            <a href="#">About</a>
+          </li>
+          <li class="nav__dropdown-item">
+            <a href="#" class="nav__dropdown-anchor">Help</a>
+            <ul class="nav__sublist">
+              <li>
+                <a href="#">User Guide</a>
+              </li>
+              <li>
+                <a href="#">Contact Support</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#">Features</a>
+          </li>
+        </ul>
+        <button type="button" class="btn header__sign-btn">Sign Up</button>
+      </nav>
+      <button type="button" class="header__menu-toggler">Open menu</button>
+    </div>
+  </header>
+  <main class="main">
+    <div class="container main__container">
+      <h1 class="main__title">Features</h1>
+      <p class="main__description">
+        Some of the features and advantages that we provide for those of you who
+        store data in this Data Warehouse.
+      </p>
+      <section class="features features--state-1">
+        <div class="features__item features__item--1">
+          <h2 class="features__title">First Feature</h2>
+          <p class="features__text">
+            Little Red Cap opened her eyes and when she saw the sunbeams dancing
+            to and fro through the trees and how the ground was covered with
+            beautiful flowers.
+          </p>
+          <a href="#" class="features__anchor">Learn more</a>
+        </div>
+
+        <div class="features__item features__item--2">
+          <h2 class="features__title">Second Feature</h2>
+          <p class="features__text">
+            Each time she picked one she thought that she could see an even more
+            beautiful one a little way off, and she ran after it,
+            going further and further into the woods.
+          </p>
+          <a href="#" class="features__anchor">Learn more</a>
+        </div>
+
+        <div class="features__item features__item--3">
+          <h2 class="features__title">Third Feature</h2>
+          <p class="features__text">
+            The wolf pressed the latch, and the door opened.
+            He stepped inside, went straight to the grandmother's bed,
+            and ate her up.
+          </p>
+          <a href="#" class="features__anchor">Learn more</a>
+        </div>
+
+        <div class="features__item features__item--new features__item--4">
+          <h2 class="features__title">Fourth Feature</h2>
+          <p class="features__text">
+            Little Red Cap had run after the flowers.
+            After she had gathered so many that she could not carry any more,
+            she remembered her grandmother.
+          </p>
+          <a href="#" class="features__anchor">Learn more</a>
+        </div>
+
+        <div class="features__togglers">
+          <button class="features__toggler features__toggler--active features__toggler--1">1</button>
+          <button class="features__toggler features__toggler--2">2</button>
+          <button class="features__toggler features__toggler--3">3</button>
+          <button class="features__toggler features__toggler--4">4</button>
+        </div>
+      </section>
+
+    </div>
+  </main>
+  <footer class="footer">
+    <div class="container footer__container">
+      <img src="img/logo--white.svg" width="49" height="35" alt="actiTIME footer logo" class="logo footer__logo">
+
+      <ul class="footer__nav">
+        <li>
+          <a href="#">About us</a>
+        </li>
+        <li>
+          <a href="#">Privacy Policy</a>
+        </li>
+      </ul>
+
+      <form class="footer__form" action="index.html" method="post">
+        <input class="footer__input" type="email" placeholder="Enter your email">
+        <button type="submit" class="btn footer__submit">Sign Up Now</button>
+      </form>
+    </div>
+  </footer>
+
+  <script>
+    const dropdownAnchor = document.querySelector('.nav__dropdown-anchor');
+    const dropdown = document.querySelector('.nav__sublist');
+
+    dropdownAnchor.addEventListener('click', function (evt) {
+      evt.preventDefault();
+      this.classList.toggle('nav__dropdown-anchor--active');
+      dropdown.classList.toggle('nav__sublist--open');
+    });
+
+    const slider = document.querySelector('.features');
+    const sliderTogglers = slider.querySelectorAll('.features__toggler');
+
+    sliderTogglers.forEach(function (toggler, i) {
+      toggler.addEventListener('click', function (evt) {
+        evt.preventDefault();
+
+        sliderTogglers.forEach(function (item, i) {
+          item.classList.remove('features__toggler--active');
+        });
+
+        this.classList.add('features__toggler--active');
+        slider.classList.remove(slider.classList.item(slider.classList.length -1));
+        slider.classList.add(`features--state-${this.innerHTML}`);
+      });
+    });
+
+    const menuToggler = document.querySelector('.header__menu-toggler');
+    const menu = document.querySelector('.nav');
+
+    menuToggler.addEventListener('click', function (evt) {
+      evt.preventDefault();
+      this.classList.toggle('header__menu-toggler--active');
+      menu.classList.toggle('nav--open');
+    });
+  </script>
+</body>
+</html>
