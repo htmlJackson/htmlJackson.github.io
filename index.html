@@ -14,14 +14,14 @@
   <header class="header">
     <div class="container header__container">
       <img src="img/logo.svg" width="49" height="35" alt="actiTIME logo" class="logo header__logo">
-      <nav class="nav">
-        <ul class="nav__list">
+      <nav class="header__nav">
+        <ul class="header__list">
           <li>
             <a href="#">About</a>
           </li>
-          <li class="nav__dropdown-item">
-            <a href="#" class="nav__dropdown-anchor">Help</a>
-            <ul class="nav__sublist">
+          <li class="header__dropdown-item">
+            <a href="#" class="header__dropdown-anchor">Help</a>
+            <ul class="header__sublist">
               <li>
                 <a href="#">User Guide</a>
               </li>
@@ -41,7 +41,7 @@
   </header>
   <main class="main">
     <div class="container main__container">
-      <h1 class="main__title">Features</h1>
+      <h1 class="h1 main__title">Features</h1>
       <p class="main__description">
         Some of the features and advantages that we provide for those of you who
         store data in this Data Warehouse.
@@ -118,39 +118,42 @@
   </footer>
 
   <script>
-    const dropdownAnchor = document.querySelector('.nav__dropdown-anchor');
-    const dropdown = document.querySelector('.nav__sublist');
+    var dropdownAnchor = document.querySelector('.header__dropdown-anchor');
+    var dropdown = document.querySelector('.header__sublist');
 
     dropdownAnchor.addEventListener('click', function (evt) {
       evt.preventDefault();
-      this.classList.toggle('nav__dropdown-anchor--active');
-      dropdown.classList.toggle('nav__sublist--open');
+      this.classList.toggle('header__dropdown-anchor--active');
+      dropdown.classList.toggle('header__sublist--open');
     });
 
-    const slider = document.querySelector('.features');
-    const sliderTogglers = slider.querySelectorAll('.features__toggler');
+    var slider = document.querySelector('.features');
+    var sliderTogglers = slider.querySelectorAll('.features__toggler');
 
-    sliderTogglers.forEach(function (toggler, i) {
+    var forEach = Array.prototype.forEach; // IE 11
+
+    forEach.call(sliderTogglers, function (toggler, i) {
       toggler.addEventListener('click', function (evt) {
         evt.preventDefault();
 
-        sliderTogglers.forEach(function (item, i) {
+        forEach.call(sliderTogglers, function (item, i) {
           item.classList.remove('features__toggler--active');
         });
 
         this.classList.add('features__toggler--active');
         slider.classList.remove(slider.classList.item(slider.classList.length -1));
-        slider.classList.add(`features--state-${this.innerHTML}`);
+        slider.classList.add('features--state-' + this.innerHTML);
       });
     });
+    //sliderTogglers.forEach();
 
-    const menuToggler = document.querySelector('.header__menu-toggler');
-    const menu = document.querySelector('.nav');
+    var menuToggler = document.querySelector('.header__menu-toggler');
+    var menu = document.querySelector('.header__nav');
 
     menuToggler.addEventListener('click', function (evt) {
       evt.preventDefault();
       this.classList.toggle('header__menu-toggler--active');
-      menu.classList.toggle('nav--open');
+      menu.classList.toggle('header__nav--open');
     });
   </script>
 </body>
